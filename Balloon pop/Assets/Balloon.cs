@@ -1,17 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+/* 
+ScoreManager
+scoreManager
+*/
 
 public class Balloon : MonoBehaviour
-{   public int scorToGive = 100;
+{   public int scoreToGive = 100;
         
     public int clickToPop = 3;
+    
+    
+    private ScoreManager scoreManager;
         
     public float scaleToIncrease = 0.10f;
-    // Start is called before the first frame update
+    
     void Start()
     {
-        //GetComponent<ScoreManager>();
+       scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
     }
     
     void OnMouseDown()
