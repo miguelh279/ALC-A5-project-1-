@@ -20,11 +20,11 @@ public class Door : MonoBehaviour
     
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.CompareTag("player")&& gm.Key >= 1)
+        if(other.gameObject.CompareTag("player")&& gm.key >= 1)
             {
                 Destroy(gameObject, doorDelay);
-                gm.Key --;
-                Debug.Log("Key = "+ gm.Key);
+                gm.key --;
+                Debug.Log("Key = "+ gm.key);
                 Debug.Log("Door is open");
             }
             else
