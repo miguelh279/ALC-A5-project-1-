@@ -5,8 +5,8 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
-    {
+    
+    
         public float speed;
         private Transform Player;
         private Vector2 target;
@@ -14,15 +14,14 @@ public class Projectile : MonoBehaviour
         void Start()
         {
         Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        target = new Vector2(player.podsition.x,player,podsition.y);
+        target = new Vector2(Player.position.x,Player.position.y);
         
         }
-    }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);   
+        transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);   
         
         if(transform.position.x == target.x && transform.position.y == target.y)
         {
