@@ -16,6 +16,8 @@ public class Projectile : MonoBehaviour
         Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         target = new Vector2(Player.position.x,Player.position.y);
         
+        playerHealth = GameObject.FindGameObjectWithTag
+        
         }
 
     // Update is called once per frame
