@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHP : MonoBehaviour
-{   
+public class Health : MonoBehaviour
+{
     public int maxHealth = 3;
     public int currentHealth;
-    public int deathDelat;
+    public float deathDelay;
     
     // Start is called before the first frame update
     void Start()
     {
-        Time.timeScale = 1;
-         currentHealth = maxHealth;
+       Time.timeScale = 1;
+       currentHealth = maxHealth; 
     }
 
     // Update is called once per frame
@@ -20,8 +20,8 @@ public class PlayerHP : MonoBehaviour
     {
         
     }
-    
-   public void TakeDamage(int dmgAmount)
+
+    public void TakeDamage(int dmgAmount)
     {
         currentHealth -= dmgAmount;
 
@@ -36,7 +36,7 @@ public class PlayerHP : MonoBehaviour
     {
         currentHealth += healAmount;
 
-        if(currentHealth >= maxHealth);
+        if(currentHealth >= maxHealth)//Puts a cap on health amount
         {
             currentHealth = maxHealth;
         }

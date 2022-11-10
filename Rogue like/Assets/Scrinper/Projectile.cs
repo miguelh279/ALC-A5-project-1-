@@ -8,15 +8,16 @@ public class Projectile : MonoBehaviour
     
     
         public float speed;
+        public int damage;
         private Transform Player;
         private Vector2 target;
+        
+        private Health playerHP;
         
         void Start()
         {
         Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         target = new Vector2(Player.position.x,Player.position.y);
-        
-        playerHealth = GameObject.FindGameObjectWithTag
         
         }
 
