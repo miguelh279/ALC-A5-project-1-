@@ -36,7 +36,7 @@ public class PlayerHP : MonoBehaviour
     {
         currentHealth += healAmount;
 
-        if(currentHealth >= maxHealth);
+        if(currentHealth >= maxHealth)
         {
             currentHealth = maxHealth;
         }

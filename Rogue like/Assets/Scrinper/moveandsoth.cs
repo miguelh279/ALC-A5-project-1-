@@ -38,13 +38,26 @@ public class moveandsoth : MonoBehaviour
         
         
         if(shotDelay <= 0)
-        {
-            Instantiate(projectile, transform.position, Quaternion.identity);
-            shotDelay -= startDelay;
-        }
-        else
-        {
-            shotDelay -= Time.deltaTime;
-        }
+            {
+                Attack();
+            }
+            else            
+            {
+                shotDelay -= Time.deltaTime;
+            }
+                    
     }
+     
+      void Attack()
+      {
+           if(Vector2.Distance(transform.position, target.position) > stopDistance)
+           {           
+               transform.position = this.transform.position;
+               Instantiate(projectile, transform.position, Quaternion.identity);
+               shotDelay = startDelay;
+           } 
+      }
+    
 }
+   
+
