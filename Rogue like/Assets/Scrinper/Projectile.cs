@@ -18,6 +18,7 @@ public class Projectile : MonoBehaviour
         {
         Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         target = new Vector2(Player.position.x,Player.position.y);
+        playerHP = GameObject.Find("Player").GetComponent<Health>();
         
         }
 
@@ -29,6 +30,19 @@ public class Projectile : MonoBehaviour
         if(transform.position.x == target.x && transform.position.y == target.y)
         {
             DestoryProjectile();
+        }
+    }
+    
+        void OnTriggerEnter2D(Collider2D other)
+    {
+       if(other.CompareTag("Player"))
+        {
+            playerHP.TakeDamage(damage);
+            Destroy(gameObject);
+        }
+        if(other.CompareTag("Wall"))
+        {
+            Destroy(gameObject);
         }
     }
     

@@ -11,16 +11,10 @@ public class Door : MonoBehaviour
     {
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    
+   
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.CompareTag("player")&& gm.key >= 1)
+        if(other.gameObject.CompareTag("Player")&& gm.key >= 1)
             {
                 Destroy(gameObject, doorDelay);
                 gm.key --;
@@ -32,4 +26,5 @@ public class Door : MonoBehaviour
             Debug.Log("Door is lock you need a key");
             }
     }
+    
 }
