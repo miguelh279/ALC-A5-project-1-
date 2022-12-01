@@ -11,24 +11,27 @@ public class FPSContorller : MonoBehaviour
     public float lookSensitivity;
     public float maxLookX;
     public float minLookX;
-    
+    // Private variables
     private float rotX;
     private Camera camera;
     private Rigidbody rb;
 
     void Awake()
     {
+        //Lock and Disable Cursor
+        Cursor.lockState = CursorLockMode.Locked;
         
+        //Get Components
         camera = Camera.main;
         rb = GetComponent<Rigidbody>();
     }
-    
+    // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    
+    // Update is called once per frame
     void Update()
     {
       PlayerMove();
@@ -40,13 +43,13 @@ public class FPSContorller : MonoBehaviour
 
     void PlayerMove()
     {
-        float x = Input.GetAxis("Horizontal") * moveSpeed;
-        float z = Input.GetAxis("Vertical") * moveSpeed;
+        float x = Input.GetAxis("Horizontal") * moveSpeed;//Get input for left and right movement
+        float z = Input.GetAxis("Vertical") * moveSpeed;// Get input for forward and back movement
 
         Vector3 dir = transform.right * x + transform.forward * z;
         dir.y = rb.velocity.y;    
         
-        rb.velocity = dir;
+        rb.velocity = dir;// Drives movement relative to the cameras look direction
     }
 
     void CameraLook()
@@ -54,18 +57,28 @@ public class FPSContorller : MonoBehaviour
         float y = Input.GetAxis("Mouse X") * lookSensitivity;
         rotX += Input.GetAxis("Mouse Y") * lookSensitivity;
 
-        rotX = Mathf.Clamp(rotX, minLookX, maxLookX);
+        rotX = Mathf.Clamp(rotX, minLookX, maxLookX);// Clamp rotation on the X Axis
 
         camera.transform.localRotation = Quaternion.Euler(-rotX, 0, 0);
-        transform.eulerAngles += Vector3.up * y;
+        transform.eulerAngles += Vector3.up * y;// Drives Camera Look Rotation
     }
 
     void PlayerJump()
     {
-        
+        //Ground Check
         Ray ray = new Ray(transform.position, Vector3.down);
 
         if(Physics.Raycast(ray, 1.1f))
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+    }
+
+    public void GiveHealth(int amount)
+    {
+        Debug.Log("Player picked up health!");
+    }
+
+    public void GiveAmmo(int amount)
+    {
+        Debug.Log("Player picked up ammo!");
     }
 }
