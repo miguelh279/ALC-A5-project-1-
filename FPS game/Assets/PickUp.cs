@@ -35,15 +35,15 @@ public class Pickup : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            PlayerController player = other.GetComponent<PlayerController>();
+            FPSContorller player = other.GetComponent<FPSContorller>();
 
             switch(type)
             {
-                case PickupType.Health:
+                case PickUpType.Health:
                 player.GiveHealth(healthAmount);
                 break;
 
-                case PickupType.Ammo:
+                case PickUpType.Ammo:
                 player.GiveAmmo(ammoAmount);
                 break;
             }     
