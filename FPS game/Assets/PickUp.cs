@@ -9,9 +9,9 @@ public enum PickUpType
     Ammo
 }
 
-public class Pickup : MonoBehaviour
+public class PickUp : MonoBehaviour
 {
-    [Header("Pickup Stats")]
+    [Header("PickUp Stats")]
     public PickUpType type;
     public int healthAmount;
     public int ammoAmount;
